@@ -1,0 +1,207 @@
+const caixaPrincipal = document.querySelector(".caixa-principal");
+const caixaPerguntas = document.querySelector(".caixa-perguntas");
+const caixaAlternativas = document.querySelector(".caixa-alternativas");
+const caixaResultado = document.querySelector(".caixa-resultado");
+const textoResultado = document.querySelector(".texto-resultado");
+
+const perguntas = [
+    {
+        enunciado: "Quantos dias tem o ciclo de uma soja tardia?",
+        alternativas: [
+            {
+                texto: "Entre 130 e 160",
+                afirmacao: "Acertou"
+            },
+            {
+                texto: "Entre 90 a 110",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Entre 115 a 125",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Entre 120 a 150",
+                afirmacao: "Errou"
+            }            
+        ]
+    },
+    {
+        enunciado: "Qual a função do molibdênio (Mo) na soja?",
+        alternativas: [
+            {
+                texto: "É um fungicida natural presente nas raízes da soja",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "A soja produz molibdênio sozinha, sem precisar do solo",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Molibdênio é usado para acelerar a floração da soja",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "O molibdênio é um micronutriente essencial para a fixação do nitrogênio",
+                afirmacao: "Acertou"
+            }            
+        ]
+    },
+    {
+        enunciado: "Qual o maior produtor de soja do Mundo?",
+        alternativas: [
+            {
+                texto: "China",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Brasil",
+                afirmacao: "Acertou"
+            },
+            {
+                texto: "Argentina",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Estados Unidos",
+                afirmacao: "Errou"
+            }
+        ]
+    },
+    {
+        enunciado: "Qual a medida de um alqueire de terra?",
+        alternativas: [
+            {
+                texto: "27.225",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "48.400 ",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "24.500",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "24.200",
+                afirmacao: "Acertou"
+            }
+        ]
+    },
+    {
+        enunciado: "Qual das plantas abaixo NÃO são plantas forrageiras de adubação verde?",
+        alternativas: [
+            {
+                texto: "Crotalária",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Nabo forrageiro",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Perebas",
+                afirmacao: "Acertou"
+            },
+            {
+                texto: "Milheto",
+                afirmacao: "Errou"
+            }
+        ]
+    },
+    {
+        enunciado: "Qual time de futebol o Pozzobom torce?",
+        alternativas: [
+            {
+                texto: "Palmeiras lixo",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Corintians timinho",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Santos",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "São Paulo o maior do Brasil",
+                afirmacao: "Acertou"
+            }
+        ]
+    },
+    {
+        enunciado: "Qual o dia do aniversario do Pozzobom?",
+        alternativas: [
+            {
+                texto: "Alvus Dumbledore",
+                afirmacao: "Acertou"
+            },
+            {
+                texto: "Severus Snape",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Minerva McGonagall",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Gellert Grindelwald",
+                afirmacao: "Errou"
+            }
+        ]
+    },    
+];
+
+
+let atual = 0;
+let perguntaAtual;
+let historiaFinal = "";
+
+function mostraPergunta() {
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
+    }
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
+    mostraAlternativas();
+}
+
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
+
+mostraPergunta();
+
+let contagemAfirmacoes = {}; // Objeto para armazenar a contagem de cada afirmação
+
+function respostaSelecionada(opcaoSelecionada) {
+    const afirmacaoSelecionada = opcaoSelecionada.afirmacao;
+    if (contagemAfirmacoes.hasOwnProperty(afirmacaoSelecionada)) {
+        contagemAfirmacoes[afirmacaoSelecionada]++;
+    } else {
+        contagemAfirmacoes[afirmacaoSelecionada] = 1;
+    }
+    
+    atual++;
+    mostraPergunta();
+}
+
+function mostraResultado() {
+    const totalPerguntas = perguntas.length;
+    const totalAcertos = contagemAfirmacoes["Acertou"] || 0; // Se não houver acertos, considera como 0
+    const porcentagemAcertos = (totalAcertos / totalPerguntas) * 100;
+
+    caixaPerguntas.textContent = "Resultado do Quiz!";
+    textoResultado.textContent = `Você acertou ${totalAcertos} de ${totalPerguntas} perguntas. Sua taxa de acerto foi ${porcentagemAcertos.toFixed(2)}%.`;
+    caixaAlternativas.textContent = "";
+}
+
