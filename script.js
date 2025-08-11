@@ -90,43 +90,43 @@ const perguntas = [
         ]
     },
     {
-        enunciado: "Qual das plantas abaixo NÃO são plantas forrageiras de adubação verde?",
+        enunciado: "Qual os peso de uma saca de soja comercial?",
         alternativas: [
             {
-                texto: "Crotalária",
+                texto: "70 Kg",
                 afirmacao: "Errou"
             },
             {
-                texto: "Nabo forrageiro",
+                texto: "55 Kg",
                 afirmacao: "Errou"
             },
             {
-                texto: "Perebas",
+                texto: "60 Kg",
                 afirmacao: "Acertou"
             },
             {
-                texto: "Milheto",
+                texto: "65 Kg",
                 afirmacao: "Errou"
             }
         ]
     },
     {
-        enunciado: "Qual time de futebol o Pozzobom torce?",
+        enunciado: "Qual é a composição específica do calcário dolomítico?",
         alternativas: [
             {
-                texto: "Palmeiras lixo",
+                texto: "52% carbonato de cálcio e 47% carbonato de magnésio",
                 afirmacao: "Errou"
             },
             {
-                texto: "Corintians timinho",
+                texto: "40% carbonato de cálcio e 60% carbonato de magnésio",
                 afirmacao: "Errou"
             },
             {
-                texto: "Santos",
+                texto: "60% carbonato de cálcio e 30% carbonato de magnésio",
                 afirmacao: "Errou"
             },
             {
-                texto: "São Paulo o maior do Brasil",
+                texto: "54% carbonato de cálcio e 45% carbonato de magnésio",
                 afirmacao: "Acertou"
             }
         ]
