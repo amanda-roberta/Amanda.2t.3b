@@ -132,23 +132,23 @@ const perguntas = [
         ]
     },
     {
-        enunciado: "Qual o dia do aniversario do Pozzobom?",
+        enunciado: "Uma espiga de milho normalmente tem?",
         alternativas: [
             {
-                texto: "Alvus Dumbledore",
+                texto: "12 fileiras de grãos",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "20 fileiras exatas",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Número de fileiras ímpares",
+                afirmacao: "Errou"
+            },
+            {
+                texto: "Sempre um número par de fileiras",
                 afirmacao: "Acertou"
-            },
-            {
-                texto: "Severus Snape",
-                afirmacao: "Errou"
-            },
-            {
-                texto: "Minerva McGonagall",
-                afirmacao: "Errou"
-            },
-            {
-                texto: "Gellert Grindelwald",
-                afirmacao: "Errou"
             }
         ]
     },    

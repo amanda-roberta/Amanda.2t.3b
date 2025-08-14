@@ -4,12 +4,12 @@
     --cor-principal: #ffffff65 ;
     --cor-secundaria: #000000; 
     --cor-destaque: #000000;
-    --cor-texto: #D7F9FF;
+    --cor-texto: #c7d7da;
 
 }
 
 body {
-    background-image: url(chapeu-seletor-hp.jpg);
+    background-image: url(./674872927180a_Tec20Agro202021.jpg);
     background-size: cover;
     background-position: center; 
     color: var(--cor-texto);
@@ -48,4 +48,14 @@ button {
 button:hover{
     background-color: var(--cor-destaque);
     color: var(--cor-principal);
+}
+
+.caixa-perguntas{
+    color: #000000;
+    font-weight: bold;
+}
+
+.texto-resultado{
+    color: #1d5a17;
+    font-weight: bold;
 }
